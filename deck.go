@@ -53,8 +53,8 @@ func (d Deck) saveToFile(filename string) error {
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
-// Function to read a file, if it is null exits the program with os.Exit(1)
-// strings.Split returns a new slice with a separator of a ","
+// Function to read a file with os.ReadFile, returns error and data, if it is nil exits the program with os.Exit(1)
+// If its successfull, strings.Split returns a new slice with a separator of a ","
 func newDeckFromFile(filename string) Deck {
 	bs, err := os.ReadFile(filename)
 	if err != nil {
