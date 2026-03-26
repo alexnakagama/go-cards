@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand/v2"
 	"os"
 	"strings"
 )
@@ -39,7 +40,9 @@ func deal(d Deck, handSize int) (Deck, Deck) {
 }
 
 func (d Deck) shuffle() {
-
+	rand.Shuffle(len(d), func(i, j int) {
+		d[i], d[j] = d[j], d[i]
+	})
 }
 
 func (d Deck) toString() string {
