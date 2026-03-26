@@ -42,3 +42,13 @@ func (d Deck) toString() string {
 func (d Deck) saveToFile(filename string) error {
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }
+
+func newDeckFromFile(filename string) Deck {
+	bs, err := os.ReadFile(filename)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	s := strings.Split(string(bs), ",")
+	return Deck(s)
+}
